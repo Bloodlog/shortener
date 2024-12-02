@@ -8,7 +8,7 @@ import (
 )
 
 type AddURLRequest struct {
-	DestUrl string
+	DestURL string
 }
 
 type AddURLResponse struct {
@@ -20,11 +20,11 @@ var (
 )
 
 func Add(req AddURLRequest, repository *repository.URLRepository) (*AddURLResponse, error) {
-	if !isValidURL(req.DestUrl) {
-		return nil, fmt.Errorf("%w: url address not valid, got %s", ErrGetFoobarInvalidRequest, req.DestUrl)
+	if !isValidURL(req.DestURL) {
+		return nil, fmt.Errorf("%w: url address not valid, got %s", ErrGetFoobarInvalidRequest, req.DestURL)
 	}
 	shortID := "EwHXdJfB"
-	repository.Set(shortID, req.DestUrl)
+	repository.Set(shortID, req.DestURL)
 
 	return &AddURLResponse{
 		ShortURL: fmt.Sprintf("http://localhost:8080/%s", shortID),

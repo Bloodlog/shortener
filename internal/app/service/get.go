@@ -5,7 +5,7 @@ import (
 )
 
 type GetURLRequest struct {
-	Id string
+	ID string
 }
 
 type GetURLResponse struct {
@@ -13,7 +13,7 @@ type GetURLResponse struct {
 }
 
 func Get(req GetURLRequest, repository *repository.URLRepository) (*GetURLResponse, error) {
-	destURL, err := repository.Get(req.Id)
+	destURL, err := repository.Get(req.ID)
 
 	return &GetURLResponse{
 		DestURL: destURL,

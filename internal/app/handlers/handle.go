@@ -20,7 +20,7 @@ func Handle(repository *repository.URLRepository) http.HandlerFunc {
 			}
 			defer request.Body.Close()
 
-			addURLResponse, err := service.Add(service.AddURLRequest{DestUrl: string(body)}, repository)
+			addURLResponse, err := service.Add(service.AddURLRequest{DestURL: string(body)}, repository)
 			if err != nil {
 				if errors.Is(err, service.ErrGetFoobarInvalidRequest) {
 					http.Error(response, err.Error(), http.StatusBadRequest)
@@ -43,7 +43,7 @@ func Handle(repository *repository.URLRepository) http.HandlerFunc {
 				return
 			}
 
-			responseService, err := service.Get(service.GetURLRequest{Id: parts[1]}, repository)
+			responseService, err := service.Get(service.GetURLRequest{ID: parts[1]}, repository)
 			if err != nil {
 				response.WriteHeader(http.StatusNotFound)
 				return
